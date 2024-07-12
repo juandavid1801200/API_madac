@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {getLotes,getLote,postLotes,desactivar_Lotes,actualizarLotes, activarLotes, lotesActivos} from '..//controllers/lotes.controller.js'
+import {getLotes,getLote,postLotes,desactivar_Lotes,actualizarLotes, activarLotes, lotesActivos, buscarIdFinca} from '..//controllers/lotes.controller.js'
 import { validarLotes } from "../../validate/lotes.validate.js";
 import { validarToken } from "../controllers/seguridad.controller.js";
 
@@ -12,4 +12,5 @@ routeLotes.post("/registrar", postLotes)
 routeLotes.put("/desactivar/:codigo",validarToken, desactivar_Lotes)
 routeLotes.put("/activar/:codigo",validarToken, activarLotes)
 routeLotes.put('/actualizar/:codigo', validarLotes ,actualizarLotes)
+routeLotes.get("/buscarFincaId/:fk_finca",buscarIdFinca)
 export default routeLotes;
